@@ -7,6 +7,10 @@ class PostImage < ApplicationRecord
       has_many :post_comments, dependent: :destroy #1つの投稿画像に対し複数コメントできるから
       has_many :favorites, dependent: :destroy
       
+      
+       validates :shop_name, presence: true
+       validates :image, presence: true
+      
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
